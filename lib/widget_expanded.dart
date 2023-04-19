@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
-class TextCheck extends StatelessWidget {
-  const TextCheck({super.key, required this.text, required this.check});
+class TextCheckExpanded extends StatelessWidget {
+  const TextCheckExpanded({super.key, required this.text, required this.check});
   final String text;
   final bool check;
   final style = const TextStyle(fontSize: 24);
@@ -20,33 +20,39 @@ class TextCheck extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Container(
-          height: 30.00,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 1),
-          ),
-          constraints: BoxConstraints(maxWidth: flex1.toDouble() ),
-          child: Text(
+        Expanded(
+flex: flex1,
+          child: Container(
+            height: 30.0,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 1,
+              ),
+            ),
+            child: Text(
             text,
             overflow: TextOverflow.ellipsis,
             maxLines: 1,
             style: style,
           ),
+          )),
+        Expanded(
+flex: flex2,
+          child: Container(
+            alignment: Alignment.center,
+        height: 30.0,
+        decoration: BoxDecoration(
+        border: Border.all(
+        color: Colors.black,
+        width: 1,
         ),
-        Container(
-          height: 30,
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.zero,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 1),
-          ),
-          constraints: BoxConstraints(
-              minWidth: flex2.toDouble(), maxWidth: flex2.toDouble()),
-          child: const DottedLine(
+        ),
+        child: const DottedLine(
               dashLength: 8.0,
               dashGapLength: 1.0
           ),
-        ),
+        )),
         Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 1),

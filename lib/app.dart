@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:text_check/widget.dart';
+import 'package:text_check/widget_expanded.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -54,10 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(
             height: 50,
           ),
+          const Text('Container'),
           TextCheck(
             text: text,
             check: check,
-          )
+          ),
+          const SizedBox(height: 10.0),
+          const Text('Expanded'),
+          TextCheckExpanded(
+            text: text,
+            check: check,
+          ),
         ],
       ),
     );
