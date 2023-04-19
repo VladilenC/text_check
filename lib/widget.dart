@@ -11,11 +11,11 @@ class TextCheck extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size ;
-    int width = size.width.toInt() ;
+    Size size = MediaQuery.of(context).size;
+    int width = size.width.toInt();
 
-    int flex1 = min(_textSize(text, style).width.toInt()+2, width - 40);
-    int flex2 = max(10, width - flex1-30);
+    int flex1 = min(_textSize(text, style).width.toInt() + 2, width - 40);
+    int flex2 = max(10, width - flex1 - 30);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -25,7 +25,7 @@ class TextCheck extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black, width: 1),
           ),
-          constraints: BoxConstraints(maxWidth: flex1.toDouble() ),
+          constraints: BoxConstraints(maxWidth: flex1.toDouble()),
           child: Text(
             text,
             overflow: TextOverflow.ellipsis,
@@ -42,10 +42,7 @@ class TextCheck extends StatelessWidget {
           ),
           constraints: BoxConstraints(
               minWidth: flex2.toDouble(), maxWidth: flex2.toDouble()),
-          child: const DottedLine(
-              dashLength: 8.0,
-              dashGapLength: 1.0
-          ),
+          child: const DottedLine(dashLength: 8.0, dashGapLength: 1.0),
         ),
         Container(
             decoration: BoxDecoration(
