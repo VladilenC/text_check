@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +12,6 @@ class TextCheck extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     int width = size.width.toInt();
 
-    int flex1 = min(_textSize(text, style).width.toInt() + 2, width - 40);
-    int flex2 = max(10, width - flex1 - 30);
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -25,7 +21,7 @@ class TextCheck extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black, width: 1),
           ),
-          constraints: BoxConstraints(maxWidth: flex1.toDouble()),
+          constraints: BoxConstraints(maxWidth: width-40),
           child: Text(
             text,
             overflow: TextOverflow.ellipsis,
@@ -33,17 +29,15 @@ class TextCheck extends StatelessWidget {
             style: style,
           ),
         ),
-        Container(
-          height: 30,
-          alignment: Alignment.centerRight,
-          padding: EdgeInsets.zero,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 1),
-          ),
-          constraints: BoxConstraints(
-              minWidth: flex2.toDouble(), maxWidth: flex2.toDouble()),
+        Expanded(
+child: Container(
+        height: 30.00,
+  alignment: Alignment.center,
+  decoration: BoxDecoration(
+    border: Border.all(color: Colors.black, width: 1),
+  ),
           child: const DottedLine(dashLength: 8.0, dashGapLength: 1.0),
-        ),
+        )),
         Container(
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black, width: 1),
@@ -61,12 +55,4 @@ class TextCheck extends StatelessWidget {
     );
   }
 
-  Size _textSize(String text, TextStyle style) {
-    final TextPainter textPainter = TextPainter(
-        text: TextSpan(text: text, style: style),
-        maxLines: 1,
-        textDirection: TextDirection.ltr)
-      ..layout(minWidth: 0, maxWidth: double.infinity);
-    return textPainter.size;
-  }
 }
